@@ -1,0 +1,38 @@
+@function rem($value){
+    @return unquote(($value/1px)/16+"rem");
+}
+
+$easeTime: 0.25s;
+$margin-top: 56px;
+
+$colors:(
+    "mattBlackLight" : "#303337",
+    "mattBlackDark" : "#2121221",
+    "mattGray" : "#878d8d",
+    "mattRed" : "#ec6271"
+);
+
+@each $colorName, $colorValue in $colors{
+    .bg-#{$colorName}{
+        background-color: #{$colorValue};
+    }
+    .text-#{$colorName}{
+        color: #{$colorValue};
+    }
+}
+
+body{
+    @extend .bg-mattBlackDark;
+    @extend .text-mattGray;
+}
+
+.wrapper{
+    margin-top: rem($margin-top);
+    sideMenu{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: rem($margin-top) auto auto;
+    }
+}
